@@ -1,0 +1,8 @@
+# MICRON.DEV.COR.UTL.003
+# [micron-ceml-lcl-others]
+# Windows Server 2008 R2 Version 6.1 (Build 7601: Service Pack 1)
+
+---
+ansible_host: 172.0.9.50
+
+...

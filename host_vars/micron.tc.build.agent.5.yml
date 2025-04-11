@@ -1,0 +1,9 @@
+# micron.tc.build.agent.5
+# [micron-teamcity]
+# Windows Server 2012 R2 Version 6.3 (Build 9600)
+
+---
+ansible_host: 172.16.47.74
+new_relic_log: teamcity
+
+...

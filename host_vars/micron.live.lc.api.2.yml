@@ -1,0 +1,16 @@
+# micron.live.lc.api.2
+# [micron-lc-prod]
+# Windows Server 2022 Datacenter Ver. 21H2
+
+---
+ansible_host: 172.16.203.172
+new_relic_log: log-disabled
+location: us_west_ncalifornia
+region: us-west-1
+bcdr: P1
+product: lawcruit_new
+env: Production
+owner: "Melvin Libunao / Ren De Leon"
+creationdate: "2024-04-15"
+
+...

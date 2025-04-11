@@ -1,0 +1,10 @@
+# MICRON.BET.LCN.SQL.003
+# [micron-lcl-non-prod]
+# Windows Server 2019 Version 1809
+# Microsoft SQL Server 2019 (RTM) - 15.0.2000.5 (X64)
+
+---
+ansible_host: 172.0.8.84
+new_relic_log: log-disabled
+
+...

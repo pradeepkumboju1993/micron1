@@ -1,0 +1,17 @@
+# MICRON.DEV.CEM.SQL.002
+# [micron-ceml-non-prod]
+# Windows Server 2012 R2 Version 6.3 (Build 9600)
+# Microsoft SQL Server 2008 R2 (SP3-GDR) (KB4057113) - 10.50.6560.0 (X64)
+
+---
+ansible_host: 172.0.8.21
+new_relic_log: log-disabled
+location: us_east_nvirginia
+region: us-east-1
+bcdr: P2
+product: ce_manager_legacy
+env: Dev
+owner: "Janine Lim / Felix Pamittan"
+creationdate: "2012-01-01"
+
+...

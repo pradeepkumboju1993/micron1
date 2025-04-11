@@ -1,0 +1,15 @@
+# micron.qa.tp.cm.api
+# [micron-tp-non-prod]
+# Windows Server 2012 R2 Version 6.3 (Build 9600)
+
+---
+ansible_host: 172.16.33.181
+new_relic_log: admin-api
+location: us_west_ncalifornia
+region: us-west-1
+bcdr: P2
+product: top_performance
+env: QA
+owner: "Jude Mailom"
+creationdate: "2012-01-01"
+...

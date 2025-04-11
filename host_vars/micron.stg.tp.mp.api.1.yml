@@ -1,0 +1,16 @@
+# micron.stg.tp.mp.api.1
+# [micron-tp-non-prod]
+# Windows Server 2012 R2 Version 6.3 (Build 9600)
+
+---
+ansible_host: 172.16.33.190
+new_relic_log: all-api
+location: us_west_ncalifornia
+region: us-west-1
+bcdr: P2
+product: top_performance
+env: Staging
+owner: "Jude Mailom"
+creationdate: "2012-01-01"
+
+...

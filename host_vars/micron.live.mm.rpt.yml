@@ -1,0 +1,16 @@
+# micron.live.mm.rpt
+# [micron-cemn-prod]
+# Windows Server 2012 R2 Version 6.3 (Build 9600)
+
+---
+ansible_host: 172.16.161.98
+new_relic_log: 3.13-izenda-log
+location: us_west_ncalifornia
+region: us-west-1
+bcdr: P1
+product: ce_manager_new
+env: Production
+owner: "Joanne Lee / Janine Lim / Felix Pamittan"
+creationdate: "2012-01-01"
+
+...

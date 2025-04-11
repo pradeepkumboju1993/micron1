@@ -1,0 +1,9 @@
+# MICRON.BET.LCN.RPT.001
+# [micron-lcl-non-prod]
+# Windows Server 2008 R2 Version 6.1 (Build 7601: Service Pack 1)
+
+---
+ansible_host: 172.0.9.98
+new_relic_log: log-disabled
+
+...

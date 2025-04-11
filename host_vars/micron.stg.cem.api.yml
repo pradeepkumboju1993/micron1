@@ -1,0 +1,16 @@
+# micron.stg.cem.api
+# [micron-cemn-non-prod]
+# Windows Server 2022
+
+---
+ansible_host: 172.16.97.157
+new_relic_log: cem-api-all-json
+location: us_west_ncalifornia
+region: us-west-1
+bcdr: P2
+product: ce_manager_new
+env: Staging
+owner: "Joanne Lee / Janine Lim / Felix Pamittan"
+creationdate: "2024-06-11"
+
+...

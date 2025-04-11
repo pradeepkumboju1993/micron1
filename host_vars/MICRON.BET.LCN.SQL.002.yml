@@ -1,0 +1,9 @@
+# MICRON.BET.LCN.SQL.002
+# [micron-lcl-non-prod]
+# Windows Server 2012 R2 Version 6.3 (Build 9600)
+# Microsoft SQL Server 2012 (SP4) (KB4018073) - 11.0.7001.0 (X64) 
+
+---
+ansible_host: 172.0.8.161
+new_relic_log: log-disabled
+...
