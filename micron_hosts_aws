@@ -1,0 +1,229 @@
+[micron-poc-testserver]
+MICRON.DEV.CEM.WEB.002
+
+# CE Manager Legacy Non Prod servers
+[micron-ceml-non-prod]
+MICRON.CNV.CEM.SQL.001
+MICRON.DEV.CEM.RPT.001
+MICRON.DEV.CEM.SQL.002
+MICRON.DEV.CEM.WEB.002
+MICRON.DEV.SML.SP.MCR.AWS
+MICRON.PRD.CEM.RPT.001
+MICRON.PRD.CEM.SQL.002
+MICRON.PRD.CEM.WEB.002
+MICRON.STG.CEM.RPT.001
+MICRON.STG.CEM.SQL.TDE
+MICRON.STG.CEM.WEB.002
+
+# CE Manager Legacy Prd servers
+[micron-ceml-stg]
+MICRON.STG.CEM.RPT.001    # New Relic not compatible
+MICRON.STG.CEM.SQL.TDE
+MICRON.STG.CEM.WEB.002
+
+# CE Manager Legacy Prd servers
+[micron-ceml-prd]
+MICRON.PRD.CEM.RPT.001     # New Relic not compatible
+MICRON.PRD.CEM.SQL.002
+MICRON.PRD.CEM.WEB.002
+
+# CE Manager Legacy Dev servers
+[micron-ceml-dev]
+MICRON.CNV.CEM.SQL.001
+MICRON.DEV.CEM.RPT.001     # New Relic not compatible
+MICRON.DEV.CEM.SQL.002
+MICRON.DEV.CEM.WEB.002
+MICRON.DEV.SML.SP.MCR.AWS
+
+# Lawcruit Legacy Non Prod servers
+[micron-lcl-non-prod]
+MICRON.BET.LCN.RPT.001
+MICRON.BET.LCN.SQL.002
+MICRON.BET.LCN.SQL.003
+MICRON.BET.LCN.WEB.001
+MICRON.DEV.LCN.SQL.002
+MICRON.DEV.LCN.WEB.002
+MICRON.INH.LCN.SQL.002
+MICRON.INH.LCN.WEB.001
+MICRON.PRD.LCN.RPT.001
+MICRON.PRD.LCN.SQL.002
+MICRON.PRD.LCN.WEB.001
+
+# Lawcruit Legacy InHouse servers
+[micron-lcl-inh]
+MICRON.INH.LCN.SQL.002
+MICRON.INH.LCN.WEB.001   # New Relic not compatible
+
+# Lawcruit Legacy BETA servers
+[micron-lcl-beta]
+MICRON.BET.LCN.RPT.001   # New Relic not compatible
+MICRON.BET.LCN.SQL.002
+MICRON.BET.LCN.SQL.003
+MICRON.BET.LCN.WEB.001   # New Relic not compatible
+
+# Lawcruit Legacy PRD servers
+[micron-lcl-prd]
+MICRON.PRD.LCN.RPT.001   # New Relic not compatible
+MICRON.PRD.LCN.SQL.002
+MICRON.PRD.LCN.WEB.001   # New Relic not compatible
+
+# Lawcruit Legacy Dev servers
+[micron-lcl-dev]
+MICRON.DEV.LCN.SQL.002
+MICRON.DEV.LCN.WEB.002   # New Relic not compatible
+
+# Shared Resources for Lawcruit Legacy & CE Manager Legacy
+[micron-ceml-lcl-others]
+MICRON.DEV.COR.BLD.001   # New Relic not compatible
+MICRON.DEV.COR.UTL.003   # New Relic not compatible
+MICRON.DEV.SML.SP.MCR.AWS
+MICRON.LIV.SML.SP.MCR.AWS
+MICRON.perforce.microncloud.net # New Relic not compatible
+
+# CE Manager New Non Prod servers
+[micron-cemn-non-prod]
+micron.dev.cem.api
+micron.main.cem.api
+micron.stg.cem.api
+micron.dev.mm.api
+micron.dev.mm.rpt
+micron.dev.mm.svc
+micron.main.mm.api
+micron.main.mm.rpt
+micron.main.mm.svc
+micron.stg.mm.api
+micron.stg.mm.rpt
+micron.stg.mm.svc
+
+# CE Manager New Dev env servers
+[micron-cemn-dev]
+micron.dev.cem.api
+micron.dev.mm.api
+micron.dev.mm.rpt
+micron.dev.mm.svc
+
+# CE Manager New Main env servers
+[micron-cemn-main]
+micron.main.cem.api
+micron.main.mm.api
+micron.main.mm.rpt
+micron.main.mm.svc
+
+# CE Manager New Stg env servers
+[micron-cemn-stg]
+micron.stg.cem.api
+micron.stg.mm.api
+micron.stg.mm.rpt
+micron.stg.mm.svc
+
+# CE Manager New Stg env servers
+[micron-cemn-prod]
+micron.live.cem.api.1
+micron.live.cem.api.2
+micron.live.mm.api.1
+micron.live.mm.api.2
+micron.live.mm.rpt
+micron.live.mm.svc.1
+micron.live.mm.svc.2
+micron.live.mm.svc.3
+micron.live.mm.svc.4
+
+# Top Performance Non Prod servers
+[micron-tp-non-prod]
+micron.dev.tp.cm.api.1
+micron.dev.tp.cm.api.2
+micron.dev.tp.cm.auth
+micron.dev.tp.mp.api.1
+micron.dev.tp.mp.api.2
+micron.dev.tp.rpt.api.1
+micron.dev.tp.rpt.api.2
+micron.dev.tp.rpt.standalone
+micron.qa.tp.cm.api
+micron.qa.tp.cm.auth
+micron.qa.tp.mp.api.1
+micron.qa.tp.mp.api.2
+micron.qa.tp.rpt.api
+micron.stg.tp.cm.api
+micron.stg.tp.cm.auth
+micron.stg.tp.mp.api.1
+micron.stg.tp.mp.api.2
+micron.stg.tp.rpt.api
+micron.stg.tp.rpt.standalone
+
+# Top Performance Dev env servers
+[micron-tp-dev]
+micron.dev.tp.cm.api.1
+micron.dev.tp.cm.api.2
+micron.dev.tp.cm.auth
+micron.dev.tp.mp.api.1
+micron.dev.tp.mp.api.2
+micron.dev.tp.rpt.api.1
+micron.dev.tp.rpt.api.2
+micron.dev.tp.rpt.standalone
+
+# Top Performance QA env servers
+[micron-tp-qa]
+micron.qa.tp.cm.api
+micron.qa.tp.cm.auth
+micron.qa.tp.mp.api.1
+micron.qa.tp.mp.api.2
+micron.qa.tp.rpt.api
+
+# Top Performance Stg env servers
+[micron-tp-stg]
+micron.stg.tp.cm.api
+micron.stg.tp.cm.auth
+micron.stg.tp.mp.api.1
+micron.stg.tp.mp.api.2
+micron.stg.tp.rpt.api
+micron.stg.tp.rpt.standalone
+
+# Top Performance Prd env servers
+[micron-tp-prod]
+micron.live.tp.cm.api.1
+micron.live.tp.cm.api.2
+micron.live.tp.cm.auth
+micron.live.tp.mp.api.1
+micron.live.tp.mp.api.2
+micron.live.tp.mp.api.3
+micron.live.tp.mp.api.4
+micron.live.tp.rpt.api.1
+micron.live.tp.rpt.api.2
+micron.live.tp.rpt.standalone
+
+# Shared by all products. Used for code deployment
+[micron-teamcity]
+micron.tc.build.agent.2a
+micron.tc.build.agent.3
+micron.tc.build.agent.4
+micron.tc.build.agent.5
+micron.tc.server
+
+# Lawcruit New Prod env servers
+[micron-lc-prod]
+micron.live.lc.rpt
+micron.live.lc.mm.api
+micron.live.lc.svc
+micron.live.lc.api.1
+micron.live.lc.api.2
+
+# Lawcruit New Main env servers
+[micron-lc-main]
+micron.main.lc.rpt
+micron.main.lc.mm.api
+micron.main.lc.svc
+micron.main.lc.api
+
+# Lawcruit New Dev env servers
+[micron-lc-dev]
+micron.dev.lc.rpt
+micron.dev.lc.mm.api
+micron.dev.lc.svc
+micron.dev.lc.api
+
+# Lawcruit New Stg env servers
+[micron-lc-stg]
+micron.stg.lc.mm.api
+micron.stg.lc.svc
+micron.stg.lc.rpt
+micron.stg.lc.api
