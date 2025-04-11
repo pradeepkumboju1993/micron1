@@ -1,0 +1,15 @@
+---
+-
+
+  hosts: all
+  gather_facts: true
+  roles:
+    - windows_create_user
+    - windows_delete_user
+    - newrelic
+    - lacework
+    - code_deploy_service
+
+
+    
+...
