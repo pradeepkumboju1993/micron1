@@ -1,0 +1,70 @@
+---
+# tasks file for lacework
+
+- name: Create Directory to download Lacework Installer Script
+  ansible.windows.win_file:
+    path: C:\new_relic_tmp
+    state: directory
+  when: not "2008" in ansible_facts['os_name']
+  tags: install-lacework
+  
+ 
+- name: Download Lacework Installer PowerShell Script
+  ansible.windows.win_get_url:
+    url: https://updates.lacework.net/win-1.7.2.3973-2023-11-05-release-1.7.0-cc74651519014fec0f7502858b06895a4cf0d802/Install-LWDataCollector.ps1
+    dest: C:\new_relic_tmp\Install-LWDataCollector.ps1
+  when: not "2008" in ansible_facts['os_name']
+  tags: install-lacework
+  
+- name: Install Lacework 
+  ansible.windows.win_powershell:
+    script: |
+      C:\new_relic_tmp\Install-LWDataCollector.ps1 -MSIURL 'https://updates.lacework.net/windows/latest/LWDataCollector.msi' -AccessToken "{{ lacework_access_token }}" -ServerURL "https://api.lacework.net" -Defender 
+  when: not "2008" in ansible_facts['os_name']
+  tags: install-lacework
+  
+- name: Check PowerShell Version
+  register: ps_version
+  ansible.windows.win_powershell:
+    script: |
+      $PSVersionTable
+  when: not "2008" in ansible_facts['os_name']
+  tags: check-psversion   
+  
+- name: Print PowerShell Version
+  ansible.builtin.debug:
+    msg: "{{ inventory_hostname }} has Powershell Version {{ps_version.output[0].PSVersion.Major}}.{{ps_version.output[0].PSVersion.Minor}}"
+  when: not "2008" in ansible_facts['os_name']
+  tags: check-psversion
+
+
+- name: Create Directory to copy powershell msu file 
+  ansible.windows.win_file:
+    path: C:\powershell_upgrade
+    state: directory
+  when: not "2008" in ansible_facts['os_name']
+  tags: 
+    - copy-pwsmsufile 
+
+- name: Copy Powershell 5 MSU File 
+  ansible.windows.win_copy:
+    src: files/Win8.1AndW2K12R2-KB3191564-x64.msu
+    dest: C:\powershell_upgrade\Win8.1AndW2K12R2-KB3191564-x64.msu
+  when: not "2008" in ansible_facts['os_name']
+  tags: 
+    - copy-pwsmsufile 
+ 
+- name: Update PowerShell Version
+  register: upgrade_results
+  ansible.windows.win_powershell:
+    script: |
+      wusa.exe C:\powershell_upgrade\Win8.1AndW2K12R2-KB3191564-x64.msu /quiet /norestart
+  when: not "2008" in ansible_facts['os_name']
+  tags: 
+    - update-powershell  
+    
+- name: Show upgrade status
+  ansible.builtin.debug:
+    msg: "{{ upgrade_results }} "
+  when: not "2008" in ansible_facts['os_name']
+  tags: update-powershell 

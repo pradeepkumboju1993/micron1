@@ -1,0 +1,23 @@
+---
+# tasks file for code_deploy_service
+
+- name: Enable WinRM quickconfig
+  ansible.windows.win_powershell:
+    script: |
+      winrm quickconfig -quiet
+  tags: codedeploy-enable-winrm-quickconfig
+  
+- name: Enable PSRemoting
+  ansible.windows.win_powershell:
+    script: |
+      Enable-PSRemoting -Force
+  tags: codedeploy-enable-psremoting
+  
+- name: Enable PSRemoting
+  ansible.windows.win_powershell:
+    script: |
+      set-item WSMan:\localhost\Client\TrustedHosts "*"
+  tags: codedeploy-set-trustedhosts
+ 
+ 
+ 

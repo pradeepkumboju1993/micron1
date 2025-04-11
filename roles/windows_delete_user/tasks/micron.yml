@@ -1,0 +1,41 @@
+---
+
+- name: Delete User
+  ansible.windows.win_user:
+    name: "{{ username }}"
+    state: absent
+  tags: micron-deleteuser-admin
+
+- name: Delete Test Users
+  ansible.windows.win_user:
+    name: "{{ item }}"
+    state: absent
+  loop:
+    - dennis.gonzales
+    - cedric.herrera
+    - jerry.inglesias
+    - joanne.lee
+    - felix.pamittan
+    - carville.panawan
+    - william.suarez
+    - ryan.sy
+    - alec-victor
+    - fioderick.villapane
+    - jhaylord.viray
+    - mondin.alegrid
+    - janine.lim
+    - catherine.unciano
+    - francis.bernardino
+    - ren.leon
+    - christian.galito
+    - althea.tarzona
+    - hernan.tiano
+    - lester.guerrero
+    - melvin.libunao
+    - sandra.dialogo
+    - jude.mailom
+    - glaiza.maranan
+    - john.seno
+    - jumar.villapando
+    - john.vitualla
+  tags: micron-delete-testusers-admin

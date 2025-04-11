@@ -1,0 +1,144 @@
+---
+# tasks file for newrelic
+
+- name: Check Server Hostname
+  ansible.builtin.debug:
+    msg: "{{ inventory_hostname }} has hostname of {{ ansible_facts['hostname'] }} is using {{ ansible_facts['os_name'] }}"
+  when: not "2008" in ansible_facts['os_name']
+  tags: check-server-os
+
+# Guided Installation via New Relic Docs
+# https://one.newrelic.com/marketplace/install-data-source?state=fbe85f19-a04c-7a2b-0765-3a96ab418be6
+- name: Install New Relic
+  ansible.windows.win_powershell:
+    script: |
+      [Net.ServicePointManager]::SecurityProtocol = 'tls12, tls';
+      $WebClient = New-Object System.Net.WebClient;
+      $WebClient.Proxy = New-Object System.Net.WebProxy($env:HTTPS_PROXY, $true);
+      $WebClient.DownloadFile("https://download.newrelic.com/install/newrelic-cli/scripts/install.ps1", "$env:TEMP\install.ps1"); & PowerShell.exe -ExecutionPolicy Bypass -File $env:TEMP\install.ps1; $env:NEW_RELIC_API_KEY="{{ new_relic_api_key }}";
+      $env:NEW_RELIC_ACCOUNT_ID="{{ new_relic_account_id }}"; & 'C:\Program Files\New Relic\New Relic CLI\newrelic.exe' install -y --tag ProjectName:"{{ project_name }}"
+  when: not "2008" in ansible_facts['os_name']
+  tags: install-newrelic1
+
+- name: Add Custom Display Name
+  community.windows.win_lineinfile:
+    path: C:\Program Files\New Relic\newrelic-infra\newrelic-infra.yml
+    line: "display_name: {{ inventory_hostname }} "
+  when: not "2008" in ansible_facts['os_name']
+  tags: install-newrelic1
+
+- name: Restart newrelic-infra service
+  win_service:
+    name: newrelic-infra
+    state: restarted
+  when: not "2008" in ansible_facts['os_name']
+  tags: install-newrelic1
+
+
+# Manual Installation via New relic
+# https://docs.newrelic.com/docs/infrastructure/install-infrastructure-agent/windows-installation/install-infrastructure-monitoring-agent-windows/
+- name: Create Directory to download New Relic Infrastructure Installer
+  ansible.windows.win_file:
+    path: C:\new_relic_tmp
+    state: directory
+  when: not "2008" in ansible_facts['os_name']
+  tags: install-newrelic
+
+- name: Download New Relic Infrastructure Installer
+  ansible.windows.win_get_url:
+    url: https://download.newrelic.com/infrastructure_agent/windows/newrelic-infra.msi
+    dest: C:\new_relic_tmp\newrelic-infra.msi
+  when: not "2008" in ansible_facts['os_name']
+  tags: install-newrelic
+
+- name: Install New Relic Infrastructure Agent
+  ansible.windows.win_powershell:
+    script: |
+      msiexec.exe /qn /i C:\new_relic_tmp\newrelic-infra.msi GENERATE_CONFIG=true LICENSE_KEY="{{ new_relic_license_key }}" DISPLAY_NAME="{{ inventory_hostname[7:] }}"
+  when: not "2008" in ansible_facts['os_name']
+  tags: install-newrelic
+
+- name: Update new relic infra custom attributes
+  template:
+    src: newrelic-tags.j2
+    dest: C:\Program Files\New Relic\newrelic-infra\newrelic-infra.yml
+  when: not "2008" in ansible_facts['os_name'] and directory_exist['stat']['exists'] == true
+  tags:
+    - install-newrelic 
+    - add-tag-newrelic
+
+# Log Forwarding using NewRelic Infrastructure  Agent
+# https://docs.newrelic.com/docs/logs/forward-logs/forward-your-logs-using-infrastructure-agent/
+- name: Check if newrelic-infra\logging.d exist
+  ansible.windows.win_file:
+    path: C:\Program Files\New Relic\newrelic-infra\logging.d
+    state: directory
+  when: not "2008" in ansible_facts['os_name'] and new_relic_log != 'log-disabled'
+  tags: install-newrelic-log
+
+- name: Create newrelic logging.yml file
+  ansible.windows.win_template:
+    src: "{{new_relic_log}}.j2"
+    dest: C:\Program Files\New Relic\newrelic-infra\logging.d\logging.yml
+  when: not "2008" in ansible_facts['os_name'] and new_relic_log != 'log-disabled'
+  tags: install-newrelic-log
+
+- name: Restart newrelic-infra service
+  win_service:
+    name: newrelic-infra
+    state: restarted
+  when: not "2008" in ansible_facts['os_name']
+  tags: 
+    - install-newrelic
+    - install-newrelic-log
+    - restart-newrelic
+    - add-tag-newrelic
+
+# Uninstall New Relic
+- name: Check New Relic Infra Package
+  register: new_relic_infra_package
+  ansible.windows.win_powershell:
+    script: |
+      Get-Package -Name 'New Relic Infrastructure Agent'
+  when: not "2008" in ansible_facts['os_name']
+  tags: uninstall-newrelic
+
+- name: Check newrelic-infra installation directory
+  register: directory_exist
+  ansible.windows.win_stat:
+    path: C:\Program Files\New Relic\newrelic-infra
+  when: not "2008" in ansible_facts['os_name']
+  tags: uninstall-newrelic
+
+- name: Stopped newrelic-infra service
+  win_service:
+    name: newrelic-infra
+    state: stopped
+  when: not "2008" in ansible_facts['os_name'] and directory_exist['stat']['exists'] == true
+  tags: uninstall-newrelic
+  ignore_errors: true
+
+- name: Uninstall New Relic Infra
+  register: uninstall_results
+  ansible.windows.win_package:
+    product_id: "{{ new_relic_infra_package.output[0].FastPackageReference }}"
+    state: absent
+  when : not "2008" in ansible_facts['os_name'] and directory_exist['stat']['exists'] == true
+  tags: uninstall-newrelic
+  ignore_errors: true
+
+- name: Add 30 second delay
+  pause:
+    seconds: 30
+  when: not "2008" in ansible_facts['os_name'] and directory_exist['stat']['exists'] == true
+  tags: uninstall-newrelic
+
+- name: Delete newrelic-infra installation directory
+  ansible.windows.win_file:
+    path: C:\Program Files\New Relic\newrelic-infra
+    state: absent
+  when: not "2008" in ansible_facts['os_name'] and directory_exist['stat']['exists'] == true
+  tags: uninstall-newrelic
+  ignore_errors: true
+
+

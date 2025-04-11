@@ -1,0 +1,18 @@
+logs:
+  - name: teamcity-launcher
+    file: C:\BuildAgent\logs\launcher.log
+	
+  - name: teamcity-wrapper
+    file: C:\BuildAgent\logs\wrapper.log
+	
+  - name: teamcity-upgrade
+    file: C:\BuildAgent\logs\upgrade.log
+  
+  - name: teamcity-build
+    file: C:\BuildAgent\logs\teamcity-build.log
+  
+  - name: teamcity-agent
+    file: C:\BuildAgent\logs\teamcity-agent.log
+	
+  - name: teamcity-vcs
+    file: C:\BuildAgent\logs\teamcity-vcs.log

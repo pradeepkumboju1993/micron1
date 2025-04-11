@@ -1,0 +1,10 @@
+---
+
+- name: Test Server Connection
+  win_ping:
+  tags: micron-test-connection
+
+- name: Check ansible_host variable
+  debug:
+    msg: "{{ ansible_host }}" 
+  tags: micron-show-ansiblehost-var

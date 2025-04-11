@@ -1,0 +1,189 @@
+---
+
+- name: Add Windows Admin User for CEML Non Prod
+  ansible.windows.win_user:
+    name: "{{ item.username }}"
+    fullname: "{{ item.fullname }}"
+    password: "{{ default_user_password }}"
+    password_never_expires : true
+    groups: Administrators
+  loop:
+    - { 'username': 'ray.hernandez', 'fullname': 'Ray Mharck Hernandez' }
+    - { 'username': 'joanne.lee', 'fullname': 'Joanne Lee' } 
+    - { 'username': 'felix.pamittan', 'fullname': 'Felix Laurence Pamittan' }
+    - { 'username': 'jhaylord.viray', 'fullname': 'Jhaylord Rian Viray' }
+    - { 'username': 'mondin.alegrid', 'fullname': 'Mondin Francisco Alegrid' }
+    - { 'username': 'janine.lim', 'fullname': 'Janine Erica Lim' }
+    - { 'username': 'catherine.unciano', 'fullname': 'Catherine Dianne Unciano' }
+  tags: micron-ceml-non-prod-admin
+
+- name: Add Windows Admin User for LCL Non Prod
+  ansible.windows.win_user:
+    name: "{{ item.username }}"
+    fullname: "{{ item.fullname }}"
+    password: "{{ default_user_password }}"
+    password_never_expires : true
+    groups: Administrators
+  loop:
+    - { 'username': 'felix.pamittan', 'fullname': 'Felix Laurence Pamittan' }
+    - { 'username': 'janine.lim', 'fullname': 'Janine Erica Lim' }
+    - { 'username': 'lester.guerrero', 'fullname': 'Lester Dave Guerrero' }
+    - { 'username': 'melvin.libunao', 'fullname': 'Melvin Libunao' }
+  tags: micron-lcl-non-prod-admin
+
+- name: Add Windows Admin User for CEML/LCL Others
+  ansible.windows.win_user:
+    name: "{{ item.username }}"
+    fullname: "{{ item.fullname }}"
+    password: "{{ default_user_password }}"
+    password_never_expires : true
+    groups: Administrators
+  loop:
+    - { 'username': 'ray.hernandez', 'fullname': 'Ray Mharck Hernandez' }
+    - { 'username': 'joanne.lee', 'fullname': 'Joanne Lee' } 
+    - { 'username': 'felix.pamittan', 'fullname': 'Felix Laurence Pamittan' }
+    - { 'username': 'jhaylord.viray', 'fullname': 'Jhaylord Rian Viray' }
+    - { 'username': 'mondin.alegrid', 'fullname': 'Mondin Francisco Alegrid' }
+    - { 'username': 'janine.lim', 'fullname': 'Janine Erica Lim' }
+    - { 'username': 'catherine.unciano', 'fullname': 'Catherine Dianne Unciano' }
+    - { 'username': 'lester.guerrero', 'fullname': 'Lester Dave Guerrero' }
+    - { 'username': 'melvin.libunao', 'fullname': 'Melvin Libunao' }
+  tags: micron-ceml-lcl-others-admin
+
+- name: Add Windows User for CEMN Non Prod
+  ansible.windows.win_user:
+    name: "{{ item.username }}"
+    fullname: "{{ item.fullname }}"
+    password: "{{ default_user_password }}"
+    password_never_expires : true
+    groups: Administrators
+  loop:
+    - { 'username': 'dennis.gonzales', 'fullname': 'Dennis James Gonzales'}
+    - { 'username': 'ray.hernandez', 'fullname': 'Ray Mharck Hernandez' }
+    - { 'username': 'cedric.herrera', 'fullname': 'Cedric Jose Herrera'}
+    - { 'username': 'jerry.iglesias', 'fullname': 'Jerry Iglesias Jr.'}
+    - { 'username': 'joanne.lee', 'fullname': 'Joanne Lee' } 
+    - { 'username': 'felix.pamittan', 'fullname': 'Felix Laurence Pamittan' }
+    - { 'username': 'carville.panawan', 'fullname': 'Carville Panawan' }
+    - { 'username': 'william.suarez', 'fullname': 'William Ramesh Suarez' }
+    - { 'username': 'ryan.sy', 'fullname': 'Ryan Matthew Sy' }
+    - { 'username': 'alec.victor', 'fullname': 'Alec Andrei Victor' }
+    - { 'username': 'fioderick.villapane', 'fullname': 'Fioderick Villapañe' }
+    - { 'username': 'jhaylord.viray', 'fullname': 'Jhaylord Rian Viray' }
+    - { 'username': 'mondin.alegrid', 'fullname': 'Mondin Francisco Alegrid' }
+    - { 'username': 'janine.lim', 'fullname': 'Janine Erica Lim' }
+    - { 'username': 'catherine.unciano', 'fullname': 'Catherine Dianne Unciano' }
+  tags: micron-cemn-non-prod-admin
+
+- name: Add Windows User for CEMN Prod
+  ansible.windows.win_user:
+    name: "{{ item.username }}"
+    fullname: "{{ item.fullname }}"
+    password: "{{ default_user_password }}" 
+    password_never_expires : true
+    groups: Administrators
+  loop:
+    - { 'username': 'dennis.gonzales', 'fullname': 'Dennis James Gonzales'}
+    - { 'username': 'ray.hernandez', 'fullname': 'Ray Mharck Hernandez' }
+    - { 'username': 'cedric.herrera', 'fullname': 'Cedric Jose Herrera'}
+    - { 'username': 'jerry.iglesias', 'fullname': 'Jerry Iglesias Jr.'}
+    - { 'username': 'joanne.lee', 'fullname': 'Joanne Lee' } 
+    - { 'username': 'felix.pamittan', 'fullname': 'Felix Laurence Pamittan' }
+    - { 'username': 'carville.panawan', 'fullname': 'Carville Panawan' }
+    - { 'username': 'william.suarez', 'fullname': 'William Ramesh Suarez' }
+    - { 'username': 'ryan.sy', 'fullname': 'Ryan Matthew Sy' }
+    - { 'username': 'alec.victor', 'fullname': 'Alec Andrei Victor' }
+    - { 'username': 'fioderick.villapane', 'fullname': 'Fioderick Villapañe' }
+    - { 'username': 'jhaylord.viray', 'fullname': 'Jhaylord Rian Viray' }
+    - { 'username': 'mondin.alegrid', 'fullname': 'Mondin Francisco Alegrid' }
+    - { 'username': 'janine.lim', 'fullname': 'Janine Erica Lim' }
+    - { 'username': 'catherine.unciano', 'fullname': 'Catherine Dianne Unciano' }
+  tags: micron-cemn-prod-admin
+  
+- name: Add Windows User for LC Prod
+  ansible.windows.win_user:
+    name: "{{ item.username }}"
+    fullname: "{{ item.fullname }}"
+    password: "{{ default_user_password }}"
+    password_never_expires : true
+    groups: Administrators
+  loop:
+    - { 'username': 'felix.pamittan', 'fullname': 'Felix Laurence Pamittan' }    
+    - { 'username': 'ren.leon', 'fullname': 'Ren Antoine De Leon' }    
+    - { 'username': 'althea.tarzona', 'fullname': 'Althea Tarzona' }
+    - { 'username': 'hernan.tiano', 'fullname': 'Hernan Tiaño' }
+    - { 'username': 'melvin.libunao', 'fullname': 'Melvin Libunao' }
+  tags: micron-lc-prod-admin
+
+- name: Add Windows User for TP Non Prod
+  ansible.windows.win_user:
+    name: "{{ item.username }}"
+    fullname: "{{ item.fullname }}"
+    password: "{{ default_user_password }}"
+    password_never_expires : true
+    groups: Administrators
+  loop:
+    - { 'username': 'sandra.dialogo', 'fullname': 'Sandra Dialogo' }
+    - { 'username': 'jude.mailom', 'fullname': 'Jude Allen Mailom' }
+    - { 'username': 'glaiza.maranan', 'fullname': 'Glaiza Maranan' }
+    - { 'username': 'john.seno', 'fullname': 'John William Seno' }
+    - { 'username': 'jumar.villapando', 'fullname': 'Jumar Villapando' }
+    - { 'username': 'john.vitualla', 'fullname': 'Vitualla' }
+  tags: micron-tp-non-prod-admin
+
+- name: Add Windows User for TP Prod
+  ansible.windows.win_user:
+    name: "{{ item.username }}"
+    fullname: "{{ item.fullname }}"
+    password: "{{ default_user_password }}"
+    password_never_expires : true
+    groups: Administrators
+  loop:
+    - { 'username': 'sandra.dialogo', 'fullname': 'Sandra Dialogo' }
+    - { 'username': 'jude.mailom', 'fullname': 'Jude Allen Mailom' }
+    - { 'username': 'glaiza.maranan', 'fullname': 'Glaiza Maranan' }
+    - { 'username': 'john.seno', 'fullname': 'John William Seno' }
+    - { 'username': 'jumar.villapando', 'fullname': 'Jumar Villapando' }
+    - { 'username': 'john.vitualla', 'fullname': 'Vitualla' }
+  tags: micron-tp-prod-admin
+
+- name: Add Windows User for TeamCity
+  ansible.windows.win_user:
+    name: "{{ item.username }}"
+    fullname: "{{ item.fullname }}"
+    password: "{{ default_user_password }}"
+    password_never_expires : true
+    groups: Administrators
+  loop:
+    - { 'username': 'ray.hernandez', 'fullname': 'Ray Mharck Hernandez' }
+    - { 'username': 'joanne.lee', 'fullname': 'Joanne Lee' } 
+    - { 'username': 'alec.victor', 'fullname': 'Alec Andrei Victor' }
+    - { 'username': 'janine.lim', 'fullname': 'Janine Erica Lim' }
+    - { 'username': 'ren.leon', 'fullname': 'Ren Antoine De Leon' }
+    - { 'username': 'melvin.libunao', 'fullname': 'Melvin Libunao' }
+    - { 'username': 'sandra.dialogo', 'fullname': 'Sandra Dialogo' }
+    - { 'username': 'jude.mailom', 'fullname': 'Jude Allen Mailom' }
+    - { 'username': 'john.seno', 'fullname': 'John William Seno' }
+  tags: micron-teamcity-admin
+
+- name: Add Individual User
+  ansible.windows.win_user:
+    name: "{{ username }}"
+    fullname: "{{ fullname }}"
+    password: "{{ default_user_password }}"
+    password_never_expires : true
+    update_password: on_create
+    groups: Administrators    
+  tags: micron-adduser-admin
+
+- name: Run net user command
+  ansible.windows.win_command: net user
+  register: all_user   
+  tags: micron-queryusers-admin
+
+- name: Print Users
+  debug:
+    msg: "{{ all_user }}" 
+  tags: micron-queryusers-admin
+
+
